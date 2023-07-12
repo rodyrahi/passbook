@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 
 const multer = require('multer');
-const puppeteer = require('puppeteer');
+
 const fs = require('fs');
 const PDFParser = require('pdf-parse');
 const { log } = require('console');
