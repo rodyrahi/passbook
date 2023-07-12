@@ -56,15 +56,47 @@ app.post('/getfile', upload.single('pdf'), (req, res) => {
         const text = data.text.split('\n');
 
         console.log(text);
+
+
+        let name 
+        let father_name = text[42].replace('Name of Father / Guardian', '');
+        let account_number = text[20].replace('Account No', '');
+        let cif_number = text[21].slice(11);
+        let ifsc_code = 'PUB0099000';
+        let mobile_number = text[23].replace('Mobile No', '');
+        let id_number = 'Not in the form';
+        let ko_number = 'K410094';
+        for (let index = 16; index < 45; index++) {
+          const element = text[index];
+
+          if (element.startsWith('Customer Name')) {
+            name = element.replace('Customer Name' ,'')
+          }
+
+          if (element.startsWith('Name of Father / Guardian')) {
+            father_name = element.replace('Name of Father / Guardian' ,'')
+          }
+
+          if (element.startsWith('Account No')) {
+            account_number = element.replace('Account No' ,'')
+          }
+
+          if (element.startsWith('Customer ID')) {
+            cif_number = element.replace('Customer ID' ,'')
+          }
+
+          if (element.startsWith('Mobile No')) {
+            mobile_number = element.replace('Mobile No' ,'')
+          }
+          
+
+
+          
+          
+        }
         // Extract the required information
-        const name = text[18].replace('Customer Name', '');
-        const father_name = text[42].replace('Name of Father / Guardian', '');
-        const account_number = text[20].replace('Account No', '');
-        const cif_number = text[21].slice(11);
-        const ifsc_code = 'PUB0099000';
-        const mobile_number = text[23].replace('Mobile No', '');
-        const id_number = 'Not in the form';
-        const ko_number = 'K410094';
+        
+
 
         const filePath = './table.html';
 
