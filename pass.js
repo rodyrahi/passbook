@@ -32,9 +32,10 @@ app.get('/', (req, res) => {
 app.post('/login', async (req, res) => {
   const { name, password } = req.body;
   const result = await executeQuery(`SELECT * FROM profiles WHERE name='${name}' AND pass='${password}'`);
+  const pass = await executeQuery(`SELECT * FROM passdata WHERE user='${name}'`);
 
   if (result.length > 0) {
-    res.render('home');
+    res.render('home' , {user:name , passbooks:pass});
   } else {
     res.render('login');
   }
@@ -44,6 +45,8 @@ const upload = multer({ dest: 'uploads/' });
 
 app.post('/getfile', upload.single('pdf'), (req, res) => {
   const file = req.file.path;
+
+  const {user} = req.body 
 
   fs.readFile(file, (err, buffer) => {
     if (err) {
@@ -123,8 +126,19 @@ app.post('/getfile', upload.single('pdf'), (req, res) => {
         // Extract the required information
         
 
+        const result = await executeQuery(`SELECT * FROM passdata WHERE name = '${name}'`);
+
+        if (result.length < 1) {
+          executeQuery(`INSERT INTO passdata (user,name, fathername, accountno, cifno, ifsccode, mobileno, idno, kocode) VALUES ('${user}','${name}', '${father_name}', '${account_number}', '${cif_number}', '${ifsc_code}', '${mobile_number}', '${id_number}', '${ko_number}')`);
+
+        }
+
+
+
 
         const filePath = './table.html';
+
+
 
         fs.readFile(filePath, 'utf8', async (err, htmlContent) => {
           if (err) {
@@ -152,6 +166,24 @@ app.post('/getfile', upload.single('pdf'), (req, res) => {
   });
 });
 
+
+
+app.post('/details', async (req, res) => {
+  const { name, fathername , accountno , cifno , ifsccode , mobileno,idno,kocode } = req.body;
+
+  res.render('passbook', {
+    name,
+    father_name:fathername,
+    account_number:accountno,
+    cif_number:cifno,
+    ifsc_code:ifsccode,
+    mobile_number:mobileno,
+    id_number:idno,
+    ko_number:kocode,
+
+  });
+
+});
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
