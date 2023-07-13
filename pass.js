@@ -77,6 +77,32 @@ app.post('/getfile', upload.single('pdf'), (req, res) => {
             father_name = element.replace('Name of Father / Guardian' ,'')
           }
 
+          let married
+
+          if (element.startsWith('Marital Status')) {
+            married = element.replace('Marital Status' ,'')
+       
+          }
+          if (element.startsWith('Name of Spouse (if married)')) {
+            
+            
+            if (element.replace('Name of Spouse (if married)' ,'')=== '') {
+
+              console.log('ok');
+            }
+            else{
+              father_name = element.replace('Name of Spouse (if married)', '')
+
+            }
+            
+          }
+          
+
+
+
+
+
+
           if (element.startsWith('Account No')) {
             account_number = element.replace('Account No' ,'')
           }
