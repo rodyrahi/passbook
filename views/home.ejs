@@ -24,14 +24,14 @@
         <div class="row">
 
 
-
+<!-- 
                 <div class="mb-3 input-group d-flex">
 
                     <span class="input-group-text"><i class="fas fa-search"></i></span>
                     <input type="text" id="searchInput" class="form-control" name="search" value="" placeholder="Enter Name Here..">
 
                 </div>
-                
+                 -->
     
 
 
@@ -43,7 +43,7 @@
                 <button type="submit" class="btn btn-success">Create</button>
             </form>
             <hr>
-
+<!-- 
             <ul id="passbookList" class="list-unstyled">
                 <% passbooks.forEach(element => { %>
                   <li>
@@ -68,7 +68,7 @@
                     </div>
                   </li>
                 <% }) %>
-              </ul>
+              </ul> -->
         </div>
     </div>
 </body>
@@ -77,22 +77,22 @@
 
 
 <script>
-    const searchInput = document.getElementById('searchInput');
-    const passbookList = document.getElementById('passbookList').getElementsByTagName('li');
+//     const searchInput = document.getElementById('searchInput');
+//     const passbookList = document.getElementById('passbookList').getElementsByTagName('li');
 
 
-searchInput.addEventListener('input', function() {
-  const searchValue = this.value.toLowerCase();
+// searchInput.addEventListener('input', function() {
+//   const searchValue = this.value.toLowerCase();
 
-  for (let i = 0; i < passbookList.length; i++) {
-    const passbook = passbookList[i];
-    const passbookName = passbook.textContent.toLowerCase();
+//   for (let i = 0; i < passbookList.length; i++) {
+//     const passbook = passbookList[i];
+//     const passbookName = passbook.textContent.toLowerCase();
 
-    if (passbookName.includes(searchValue)) {
-      passbook.style.display = 'block';
-    } else {
-      passbook.style.display = 'none';
-    }
-  }
-});
+//     if (passbookName.includes(searchValue)) {
+//       passbook.style.display = 'block';
+//     } else {
+//       passbook.style.display = 'none';
+//     }
+//   }
+// });
 </script>
