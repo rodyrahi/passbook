@@ -68,6 +68,7 @@ app.post('/getfile', upload.single('pdf'), (req, res) => {
         let mobile_number = text[23].replace('Mobile No', '');
         let id_number = '';
         let ko_number = 'K410094';
+        let dob
         for (let index = 16; index < 45; index++) {
           const element = text[index];
 
@@ -117,7 +118,9 @@ app.post('/getfile', upload.single('pdf'), (req, res) => {
             mobile_number = element.replace('Mobile No' ,'')
           }
           
-
+          if (element.startsWith('Date of Birth')) {
+            dob = element.replace('Date of Birth' ,'')
+          }
 
           
           
@@ -155,6 +158,8 @@ app.post('/getfile', upload.single('pdf'), (req, res) => {
             mobile_number,
             id_number,
             ko_number,
+            dob,
+            
 
           });
         });
