@@ -3,9 +3,8 @@ const app = express();
 const multer = require('multer');
 const fs = require('fs');
 const PDFParser = require('pdf-parse');
-const { v4: uuidv4 } = require('uuid');
-const { PDFDocument } = require('pdf-lib');
-const { fromPath } = require('pdf2pic');
+
+
 var con = require("./database.js");
 const port = 9000;
 
