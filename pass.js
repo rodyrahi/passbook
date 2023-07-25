@@ -144,7 +144,11 @@ app.post('/getfile', upload.single('pdf'), (req, res) => {
         // Extract the required information
         
 
-        const result = await executeQuery(`SELECT * FROM passdata WHERE name = '${name}'`);
+        const result = await executeQuery(`SELECT * FROM passdata WHERE name = '${name}'`); 
+         const phone = await executeQuery(`SELECT * FROM profiles WHERE name = '${user}'`);
+
+         console.log(phone);
+
 
         if (result.length < 1) {
           executeQuery(`INSERT INTO passdata (user,name, fathername, accountno, cifno, ifsccode, mobileno, idno, kocode) VALUES ('${user}','${name}', '${father_name}', '${account_number}', '${cif_number}', '${ifsc_code}', '${mobile_number}', '${id_number}', '${ko_number}')`);
@@ -175,6 +179,8 @@ app.post('/getfile', upload.single('pdf'), (req, res) => {
             id_number,
             ko_number,
             dob,
+            user,
+            phone 
             
 
           });
