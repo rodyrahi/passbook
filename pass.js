@@ -33,8 +33,23 @@ app.post('/login', async (req, res) => {
   const result = await executeQuery(`SELECT * FROM profiles WHERE name='${name}' AND pass='${password}'`);
   const pass = await executeQuery(`SELECT * FROM passdata WHERE user='${name}'`);
 
+
+  var now = new Date();
+  now = now.getDate() +'/'+now.getMonth() +'/'+now.getFullYear()
+  now = now.toString();
+  console.log(now);
+  
   if (result.length > 0) {
-    res.render('home' , {user:name , passbooks:pass});
+
+    if (result[0].expiredate === now) {
+      console.log('expired');
+
+      res.render('login');
+    }else{
+      console.log('notexpired' , now , result.expiredate);
+      res.render('home' , {user:name , passbooks:pass});
+
+    }
   } else {
     res.render('login');
   }
@@ -45,10 +60,6 @@ const upload = multer({ dest: 'uploads/' });
 app.post('/getfile', upload.single('pdf'), (req, res) => {
   const file = req.file.path;
 
-  var oneYearFromNow = new Date();
-  oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1);
-  
-  console.log(oneYearFromNow);
 
   const {user} = req.body 
 
@@ -193,6 +204,42 @@ app.post('/details', async (req, res) => {
   });
 
 });
+
+app.get('/createclient', async (req, res) => {
+  const clients = await executeQuery(`SELECT * FROM profiles `);
+  res.render('createclient', {clients:clients})
+})
+app.post('/createclient', async (req, res) => {
+
+  var oneYearFromNow = new Date();
+  oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1);
+
+  oneYearFromNow = oneYearFromNow.getDate()+'/'+oneYearFromNow.getMonth() +'/'+oneYearFromNow.getFullYear()
+  
+  var now = new Date();
+  now = now.getDate() +'/'+now.getMonth() +'/'+now.getFullYear()
+
+  const { name, number , pass } = req.body;
+  executeQuery(`INSERT INTO profiles (name, mobileno , pass , activedate , expiredate) VALUES ('${name}','${number}','${pass}', '${now}', '${oneYearFromNow}')`);
+
+
+  
+  res.redirect('/createclient')
+  
+
+})
+
+app.get('/deleteclient/:name', async (req, res) => {
+
+  const name = req.params.name
+
+  console.log(name);
+  await executeQuery(`DELETE FROM profiles WHERE name = '${name}' ;
+  `)
+  res.redirect('/createclient')
+  
+
+})
 
 
 app.listen(port, () => {
