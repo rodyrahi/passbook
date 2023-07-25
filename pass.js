@@ -45,6 +45,11 @@ const upload = multer({ dest: 'uploads/' });
 app.post('/getfile', upload.single('pdf'), (req, res) => {
   const file = req.file.path;
 
+  var oneYearFromNow = new Date();
+  oneYearFromNow.setFullYear(oneYearFromNow.getFullYear() + 1);
+  
+  console.log(oneYearFromNow);
+
   const {user} = req.body 
 
   fs.readFile(file, (err, buffer) => {
