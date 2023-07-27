@@ -156,6 +156,14 @@ app.post('/getfile', upload.single('pdf'), (req, res) => {
         }
 
 
+        function allCapsToCamelCase(inputString) {
+          return inputString.toLowerCase().replace(/\b\w/g, (match) => match.toUpperCase());
+                        }
+        
+        // Example usage:
+       
+       father_name = allCapsToCamelCase(father_name);
+
 
 
         const filePath = './table.html';
