@@ -4,6 +4,8 @@ const multer = require('multer');
 const fs = require('fs');
 const PDFParser = require('pdf-parse');
 var extractImagesFromPDF = require("./extractImages.js");
+const path = require('path');
+
 
 
 var con = require("./database.js");
@@ -12,6 +14,32 @@ const port = 9000;
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
+
+
+
+const folderPath = './public/images';
+
+fs.readdir(folderPath, (err, files) => {
+  if (err) {
+    console.error('Error reading folder contents:', err);
+    return;
+  }
+
+  // Loop through all files and remove them
+  files.forEach((file) => {
+    const filePath = path.join(folderPath, file);
+
+    fs.unlink(filePath, (err) => {
+      if (err) {
+        console.error('Error deleting file:', err);
+        return;
+      }
+      console.log(`${file} has been deleted successfully.`);
+    });
+  });
+});
+
+
 
 function executeQuery(query) {
   return new Promise((resolve, reject) => {
