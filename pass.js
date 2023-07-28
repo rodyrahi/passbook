@@ -3,6 +3,7 @@ const app = express();
 const multer = require('multer');
 const fs = require('fs');
 const PDFParser = require('pdf-parse');
+var extractImagesFromPDF = require("./extractImages.js");
 
 
 var con = require("./database.js");
@@ -59,6 +60,12 @@ const upload = multer({ dest: 'uploads/' });
 
 app.post('/getfile', upload.single('pdf'), (req, res) => {
   const file = req.file.path;
+
+  
+  const pdfFilePath = 'input.pdf';
+  const outputDirectory = './public/images';
+
+  extractImagesFromPDF(file, outputDirectory);
 
 
   const {user} = req.body 

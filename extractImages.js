@@ -13,7 +13,7 @@ function extractImagesFromPDF(pdfFilePath, outputDir) {
 }
 
 // Replace 'input.pdf' with the path to your PDF file
-const pdfFilePath = 'input.pdf';
-const outputDirectory = './public/images';
 
-extractImagesFromPDF(pdfFilePath, outputDirectory);
+
+
+module.exports = extractImagesFromPDF;
