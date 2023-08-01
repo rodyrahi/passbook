@@ -137,6 +137,8 @@ app.post('/getfile', upload.single('pdf'), (req, res) => {
             father_name = element.replace('C/O' ,'').split(',')[0]
           }
 
+
+
           // let married
 
           // if (element.startsWith('Marital Status')) {
