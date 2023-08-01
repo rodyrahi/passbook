@@ -13,30 +13,44 @@
 
 </head>
 <body>
-    <form action="/createclient" method="post">
-        <input type="text" name="name" placeholder="name"> 
-        <br>
-        <input type="text" name="number" placeholder="number">
-        <br>
-        <input type="text" name="pass" placeholder="password">
-        <button type="submit">create</button>
+    <div class="container">
+        <h2>Admin</h2>
+    <form action="/createclient" method="post" class="my-3">
+        <div class="mb-3">
+            <input type="text" name="name" class="form-control" placeholder="name"> 
+
+        </div>
+        
+        <div class="mb-3">
+            <input type="text" name="number" class="form-control" placeholder="number">
+
+        </div>
+        
+        <div class="mb-3">
+            <input type="text" name="pass" class="form-control" placeholder="password">
+
+        </div>
+        <button type="submit" class="btn btn-dark">create</button>
         </form>
         
         
         
         
-        <p>delete client</p>
+        <h4>Client</h4>
+
+        <hr>
         <div>
             <% clients.forEach(element => { %>
-                <div class="border" >
-                    <p><%= element.name %></p>
-                    <a href="/deleteclient/<%= element.name %>">delete</a><br>
+                <div class="border p-1 my-2" >
+                    <h5><%= element.name %></h5>
+                    <a href="/deleteclient/<%= element.name %>" class="btn btn-dark btn-sm">delete</a><br>
                 </div>
         
             <% }) %>
         
         
         </div>
+    </div>
 </body>
 </html>
 
