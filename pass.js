@@ -133,6 +133,12 @@ app.post('/getfile', upload.single('pdf'), (req, res) => {
           if (element.startsWith('W/O:') ) {
             father_name = element.replace('W/O:' ,'').split(',')[0]
           }
+          if (element.startsWith('S/O') ) {
+            father_name = element.replace('S/O' ,'').split(',')[0]
+          }
+          if (element.startsWith('W/O') ) {
+            father_name = element.replace('W/O' ,'').split(',')[0]
+          }
           if (element.startsWith('C/O') ) {
             father_name = element.replace('C/O' ,'').split(',')[0]
           }
