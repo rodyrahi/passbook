@@ -132,7 +132,6 @@ app.post('/getfile', upload.single('pdf'), (req, res) => {
             father_name = element.replace('Name of Father / Guardian' ,'').split(',')[0]
           }
 
-          
 
           if (element.startsWith('S/O:') ) {
             father_name = element.replace('S/O:' ,'').split(',')[0]
