@@ -127,6 +127,13 @@ app.post('/getfile', upload.single('pdf'), (req, res) => {
             name = element.replace('Customer Name' ,'')
           }
 
+
+          if (element.startsWith('Name of Father / Guardian') ) {
+            father_name = element.replace('Name of Father / Guardian' ,'').split(',')[0]
+          }
+
+          
+
           if (element.startsWith('S/O:') ) {
             father_name = element.replace('S/O:' ,'').split(',')[0]
           }
@@ -150,9 +157,6 @@ app.post('/getfile', upload.single('pdf'), (req, res) => {
             father_name = element.replace('C/O:' ,'').split(',')[0]
           }
 
-          if (element.startsWith('Name of Father / Guardian') ) {
-            father_name = element.replace('Name of Father / Guardian' ,'').split(',')[0]
-          }
 
           
 
