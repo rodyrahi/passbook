@@ -222,9 +222,9 @@
     
                 </div>
             </div>
-        <% } %>
+       
 
-        <% if (phone[0].pattern === 'a' ) { %>
+        <% } else if (phone[0].pattern === 'a' ) { %>
             <div class="row " style="border-bottom: 1.5px black solid;">
                 <div class="col-4 p-0">
                     <p class="fw-bold m-0  ms-1" >Address: </p>
@@ -235,7 +235,7 @@
     
                 </div>
             </div>
-        <% } %>
+        <% } else {} %>
         
 
    </div>
