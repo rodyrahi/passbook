@@ -44,7 +44,7 @@ function runMysqldump() {
 }
 
 // Schedule the mysqldump to run every 24 hours
-cron.schedule("*/15 * * * * *", () => {
+cron.schedule("0 0 */1 * *", () => {
   console.log("Starting database backup...");
   runMysqldump();
 });
