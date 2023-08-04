@@ -210,16 +210,33 @@
             </div>
         </div>  
 
-        <div class="row " style="border-bottom: 1.5px black solid;">
-            <div class="col-4 p-0">
-                <p class="fw-bold m-0  ms-1" >DATE OF ISSUE: </p>
- 
-            </div>
-            <div class="col-8">
-                <input type="text" class="fw-bold" id="date" value="" style=" font-size: 1rem;">
 
+        <% if (phone[0].pattern === 'd' ) { %>
+            <div class="row " style="border-bottom: 1.5px black solid;">
+                <div class="col-4 p-0">
+                    <p class="fw-bold m-0  ms-1" >DATE OF ISSUE: </p>
+     
+                </div>
+                <div class="col-8">
+                    <input type="text" class="fw-bold" id="date" value="" style=" font-size: 1rem;">
+    
+                </div>
             </div>
-        </div>  
+       
+
+        <% } else if (phone[0].pattern === 'a' ) { %>
+            <div class="row " style="border-bottom: 1.5px black solid;">
+                <div class="col-4 p-0">
+                    <p class="fw-bold m-0  ms-1" >Address: </p>
+     
+                </div>
+                <div class="col-8">
+                    <input type="text" class="fw-bold" id="address" value="" style=" font-size: 1rem;">
+    
+                </div>
+            </div>
+        <% } else {} %>
+        
 
    </div>
 
