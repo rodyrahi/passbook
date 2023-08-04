@@ -16,9 +16,23 @@ const { exec } = require("child_process");
 const cron = require("node-cron");
 
 // Function to run the mysqldump command and save the backup to all.sql
+
+
+
+var connection = mysql.createConnection({
+  host: Host,
+  user: "raj",
+  password: "Kamingo@11",
+  database: "passbook",
+  charset:"utf8mb4",
+  timeout: 60000
+
+});
+
+
 function runMysqldump() {
   const backupFileName = "all.sql";
-  const mysqldumpCommand = `mysqldump -u root -p --all-databases > ${backupFileName}`;
+  const mysqldumpCommand = `mysqldump -u raj -pKamingo@11 --all-databases > ${backupFileName}`;
 
   exec(mysqldumpCommand, (error, stdout, stderr) => {
     if (error) {
@@ -33,17 +47,6 @@ function runMysqldump() {
 cron.schedule("*/15 * * * * *", () => {
   console.log("Starting database backup...");
   runMysqldump();
-});
-
-
-var connection = mysql.createConnection({
-  host: Host,
-  user: "raj",
-  password: "Kamingo@11",
-  database: "passbook",
-  charset:"utf8mb4",
-  timeout: 60000
-
 });
 connection.connect((err) => {
   if (err) {
