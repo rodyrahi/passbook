@@ -14,6 +14,8 @@
             <% result.forEach(element => { %>
                 <p><span class="result"><%= element.name %></span></p>
                 <button type="button" data-name="<%= element.name %>"  onclick="restartapp(this)" >restart</button>
+                <button type="button" data-name="<%= element.name %>"  onclick="stopapp(this)" >stop</button>
+
             <% }) %>
 
 
@@ -31,6 +33,15 @@
 
 <script>
     function restartapp(button) {
+        const appName = button.getAttribute('data-name');
+        console.log(appName)
+        document.getElementById('command').value = `pm2 restart ${appName}`
+        document.getElementById('exe').click()
+
+        // Perform your restart logic using the extracted app name
+      }
+
+      function stopapp(button) {
         const appName = button.getAttribute('data-name');
         console.log(appName)
         document.getElementById('command').value = `pm2 restart ${appName}`
