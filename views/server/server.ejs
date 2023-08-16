@@ -19,7 +19,7 @@
                     <button type="button" data-name="<%= element.name %>"  onclick="stopapp(this)" >stop</button>
 
                 <% } %>
-                <%= element.pm2_env %>
+                <%= element.pm2_env.status %>
 
             <% }) %>
 
