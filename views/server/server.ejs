@@ -1,30 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Your meta tags and title here -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
+
     <div class="container">
         <h1>Server Status</h1>
         <form action="" method="post">
-            <% if (appData && appData.length > 0) { %>
-                <ul>
-                    <% appData.forEach(app => { %>
-                        <li>
-                            <span><%= app.name %></span>
-                            <% if (app.status === 'online') { %>
-                                <button type="submit" name="restart" value="<%= app.name %>">Restart</button>
-                                <button type="submit" name="stop" value="<%= app.name %>">Stop</button>
-                            <% } else { %>
-                                <span><%= app.status %></span>
-                            <% } %>
-                        </li>
-                    <% }); %>
-                </ul>
-            <% } else { %>
-                <p>No apps found.</p>
-            <% } %>
+            <p><span class="result"><%= result %></span></p>
+            <p><span class="std"><%= std %></span></p>
+            <input type="text" name="command" placeholder="Enter a command">
+            <button type="submit">Execute Command</button>
         </form>
     </div>
+
 </body>
 </html>
