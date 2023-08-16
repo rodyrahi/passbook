@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
   const command = "pm2 prettylist";
 
   var result ;
-  var std ; 
+  var std ='' ; 
 
   exec(command, (error, stdout, stderr) => {
     if (error) {
@@ -16,11 +16,11 @@ router.get("/", (req, res) => {
     }
     if (stderr) {
 
-      std = stderr;
+      std = `${stderr}`;
     }
     
     // Store stdout and render the view here, inside the callback
-    std = stdout;
+    std = `${stdout}`;
 
 
 
