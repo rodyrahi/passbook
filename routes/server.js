@@ -65,7 +65,7 @@ router.post("/cmd", (req, res) => {
     std = JSON.parse(std);
 
    
-    res.render("server/server", { result: std,error:`${error}`, stderr:`${stderr}` , stdout:`${stdout}` });
+    res.redirect("/" );
   });
 });
 module.exports = router;
