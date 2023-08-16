@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
   const command = "pm2 prettylist";
 
   var result ;
-  var std = ''; // Initialize std
+  var std ; 
 
   exec(command, (error, stdout, stderr) => {
     if (error) {
