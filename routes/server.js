@@ -66,7 +66,7 @@ router.post("/cmd", (req, res) => {
     console.log(std);
 
    
-    res.redirect("/");
+    res.redirect("/server");
   });
 });
 module.exports = router;
