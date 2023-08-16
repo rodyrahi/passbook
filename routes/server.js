@@ -4,7 +4,7 @@ var router = express.Router();
 const { exec } = require("child_process");
 
 router.get("/", (req, res) => {
-  const command = "pm2 prettylist";
+  const command = "pm2 jlist";
 
   var result ;
   var std ='' ; 
