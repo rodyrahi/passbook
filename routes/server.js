@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
     // Store stdout and render the view here, inside the callback
     std = `${stdout}`;
 
-
+    
 
     std = JSON.parse(std);
 
