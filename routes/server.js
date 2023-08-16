@@ -27,8 +27,37 @@ router.get("/", (req, res) => {
     std = JSON.parse(std);
 
    
-    res.render("server/server", { result: std, std: 'std'});
+    res.render("server/server", { result: std,error:`${error}`, stderr:`${stderr}` , stdout:`${stdout}` });
   });
 });
 
+
+router.post("/cmd", (req, res) => {
+
+  const {command }= req.body
+
+  var result ;
+  var std ='' ; 
+
+  exec(command, (error, stdout, stderr) => {
+    if (error) {
+      // Handle error
+      result = error;
+    }
+    if (stderr) {
+
+      std = `${stderr}`;
+    }
+    
+    // Store stdout and render the view here, inside the callback
+    std = `${stdout}`;
+
+
+
+    std = JSON.parse(std);
+
+   
+    res.render("server/server", { result: std,error:`${error}`, stderr:`${stderr}` , stdout:`${stdout}` });
+  });
+});
 module.exports = router;

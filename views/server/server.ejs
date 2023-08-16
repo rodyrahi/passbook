@@ -9,23 +9,33 @@
 
     <div class="container">
         <h1>Server Status</h1>
-        <form action="" method="post">
+        <form action="/server/cmd" method="post">
 
             <% result.forEach(element => { %>
                 <p><span class="result"><%= element.name %></span></p>
+                <button type="button" data-name="<%= element.name %>"  onclick="restartapp(this)" >restart</button>
             <% }) %>
 
-
-                
-    
-            <p><span class="std"><%= std %></span></p>
 
 
 
             <input type="text" name="command" placeholder="Enter a command">
             <button type="submit">Execute Command</button>
         </form>
+
+        <hr>
+        <span><%=  %></span>
     </div>
 
 </body>
+
+<script>
+    function restartapp(button) {
+        const appName = button.getAttribute('data-name');
+        document.getElementById('command').value = `pm2 restart ${appName} `
+        // Perform your restart logic using the extracted app name
+      }
+
+</script>
+
 </html>
