@@ -8,6 +8,12 @@ const path = require('path');
 
 
 
+
+const serverRouter = require("./routes/server.js");
+app.use("/server",serverRouter) ;
+
+
+
 var con = require("./database.js");
 const port = 9000;
 
