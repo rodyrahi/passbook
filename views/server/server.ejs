@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <!-- Your meta tags and title here -->
 </head>
 <body>
     <div class="container">
@@ -18,8 +13,8 @@
                         <li>
                             <span><%= app.name %></span>
                             <% if (app.status === 'online') { %>
-                                <button type="submit" name="restart" value="<%= app.id %>">Restart</button>
-                                <button type="submit" name="stop" value="<%= app.id %>">Stop</button>
+                                <button type="submit" name="restart" value="<%= app.name %>">Restart</button>
+                                <button type="submit" name="stop" value="<%= app.name %>">Stop</button>
                             <% } else { %>
                                 <span><%= app.status %></span>
                             <% } %>
