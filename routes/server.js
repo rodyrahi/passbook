@@ -23,6 +23,9 @@ router.get("/", (req, res) => {
     std = stdout;
 
 
+
+    
+
    
     res.render("server/server", { result: result, std: std });
   });
