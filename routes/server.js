@@ -6,22 +6,16 @@ const { exec } = require("child_process");
 router.get("/", (req, res) => {
   const command = "pm2 list";
 
-  var result = '';
-  var std = ''; // Initialize std
-
   exec(command, (error, stdout, stderr) => {
     if (error) {
-      // Handle error
-      result = error.message;
-    }
-    if (stderr) {
-      // Handle stderr
-      std = stderr;
+      console.error(`Error: ${error.message}`);
+      return;
     }
     
-    // Store stdout and render the view here, inside the callback
-    std = stdout;
-    res.render("server/server", { result: result, std: std });
+    const lines = stdout.trim().split("\n");
+    const appNames = lines.slice(1).map(line => line.split(/\s+/)[1]);
+    
+    res.render("server/server", { appNames: appNames });
   });
 });
 
