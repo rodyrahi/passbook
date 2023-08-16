@@ -11,11 +11,20 @@ router.get("/", (req, res) => {
       console.error(`Error: ${error.message}`);
       return;
     }
-    
+
     const lines = stdout.trim().split("\n");
-    const appNames = lines.slice(1).map(line => line.split(/\s+/)[1]);
+    const appDataLines = lines.slice(2, -1); // Extract app data lines
     
-    res.render("server/server", { appNames: appNames });
+    const appData = appDataLines.map(line => {
+      const data = line.trim().split(/\s+/);
+      return {
+        id: data[0],
+        name: data[1],
+        status: data[8]
+      };
+    });
+
+    res.render("server/server", { appData: appData });
   });
 });
 
