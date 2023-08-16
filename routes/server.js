@@ -6,7 +6,7 @@ const { exec } = require("child_process");
 router.get("/", (req, res) => {
   const command = "pm2 prettylist";
 
-  var result = '';
+  var result ;
   var std = ''; // Initialize std
 
   exec(command, (error, stdout, stderr) => {
@@ -24,7 +24,7 @@ router.get("/", (req, res) => {
 
 
    
-    res.render("server/server", { result: result, std: std });
+    res.render("server/server", { result: result[0], std: std });
   });
 });
 
