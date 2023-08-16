@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
   exec(command, (error, stdout, stderr) => {
     if (error) {
       // Handle error
-      result = error.message;
+      result = error;
     }
     if (stderr) {
 
@@ -24,7 +24,7 @@ router.get("/", (req, res) => {
 
 
 
-    
+    std = JSON.parse(std);
 
    
     res.render("server/server", { result: std[0], std: 'std'});
