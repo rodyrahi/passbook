@@ -34,6 +34,8 @@
         const appName = button.getAttribute('data-name');
         console.log(appName)
         document.getElementById('command').value = `pm2 restart ${appName} `
+        document.getElementById('exe').click()
+
         // Perform your restart logic using the extracted app name
       }
 

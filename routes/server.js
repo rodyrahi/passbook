@@ -33,8 +33,8 @@ router.get("/", (req, res) => {
 
 
 router.post("/cmd", (req, res) => {
-
-  const {command }= req.body
+  console.log(req.body);
+  const {command } = req.body
 
   var result ;
   var std ='' ; 
