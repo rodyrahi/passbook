@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
     std = stdout;
 
 
-    const appNames = result.map(appData => appData.name);
+    const appNames = stdout.map(appData => appData.name);
     
 
    
