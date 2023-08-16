@@ -13,13 +13,16 @@
 
             <% result.forEach(element => { %>
                 <p><span class="result"><%= element.name %></span></p>
-                <button type="button" data-name="<%= element.name %>"  onclick="restartapp(this)" >restart</button>
+                <button type="button" data-cmd="restart" data-name="<%= element.name %>"  onclick="app(this)" >restart</button>
 
-                <% if (element.status === 'online') { %>
-                    <button type="button" data-name="<%= element.name %>"  onclick="stopapp(this)" >stop</button>
+                <% if (element.pm2_env.status === 'online') { %>
+                    <button type="button" data-cmd="stop" data-name="<%= element.name %>"  onclick="app(this)" >stop</button>
 
-                <% } %>
-                <%= element.pm2_env.status %>
+                <% } else { %>
+                    <button type="button" data-cmd="start" data-name="<%= element.name %>"  onclick="app(this)" >stop</button>
+
+                    <%} %>
+
 
             <% }) %>
 
@@ -39,21 +42,15 @@
 <script>
     function restartapp(button) {
         const appName = button.getAttribute('data-name');
+        const cmd= button.getAttribute('data-cmd');
         console.log(appName)
-        document.getElementById('command').value = `pm2 restart ${appName}`
+        document.getElementById('command').value = `pm2 ${cmd} ${appName}`
         document.getElementById('exe').click()
 
         // Perform your restart logic using the extracted app name
       }
 
-      function stopapp(button) {
-        const appName = button.getAttribute('data-name');
-        console.log(appName)
-        document.getElementById('command').value = `pm2 stop ${appName}`
-        document.getElementById('exe').click()
-
-        // Perform your restart logic using the extracted app name
-      }
+     
 
 </script>
 
