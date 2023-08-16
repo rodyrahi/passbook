@@ -14,7 +14,12 @@
             <% result.forEach(element => { %>
                 <p><span class="result"><%= element.name %></span></p>
                 <button type="button" data-name="<%= element.name %>"  onclick="restartapp(this)" >restart</button>
-                <button type="button" data-name="<%= element.name %>"  onclick="stopapp(this)" >stop</button>
+
+                <% if (element.status === 'online') { %>
+                    <button type="button" data-name="<%= element.name %>"  onclick="stopapp(this)" >stop</button>
+
+                <% } %>
+                <%= element.status %>
 
             <% }) %>
 
