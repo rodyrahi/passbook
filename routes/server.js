@@ -3,6 +3,13 @@ const app = express();
 var router = express.Router();
 const { exec } = require("child_process");
 
+
+
+router.use(express.urlencoded({ extended: true }));
+
+router.use(bodyParser.urlencoded({ extended: true }));
+router.use(bodyParser.json());
+
 router.get("/", (req, res) => {
   const command = "pm2 jlist";
 
