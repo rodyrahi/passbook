@@ -4,7 +4,7 @@ var router = express.Router();
 const { exec } = require("child_process");
 
 router.get("/", (req, res) => {
-  const command = "pm2 list";
+  const command = "pm2 prettylist";
 
   var result = '';
   var std = ''; // Initialize std
@@ -21,6 +21,9 @@ router.get("/", (req, res) => {
     
     // Store stdout and render the view here, inside the callback
     std = stdout;
+
+
+   
     res.render("server/server", { result: result, std: std });
   });
 });

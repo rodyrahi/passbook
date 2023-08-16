@@ -10,8 +10,17 @@
     <div class="container">
         <h1>Server Status</h1>
         <form action="" method="post">
-            <p><span class="result"><%= result %></span></p>
+
+            <% result.forEach(element => { %>
+                <p><span class="result"><%= element.name %></span></p>
+
+                
+             
+            <% }) %>
             <p><span class="std"><%= std %></span></p>
+
+
+
             <input type="text" name="command" placeholder="Enter a command">
             <button type="submit">Execute Command</button>
         </form>
