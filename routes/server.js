@@ -24,7 +24,7 @@ router.get("/", (req, res) => {
 
 
    
-    res.render("server/server", { result: result[0], std: std });
+    res.render("server/server", { result: result, std: std });
   });
 });
 
