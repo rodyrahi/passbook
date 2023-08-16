@@ -62,10 +62,11 @@ router.post("/cmd", (req, res) => {
 
 
 
-    std = JSON.parse(std);
+ 
+    console.log(std);
 
    
-    res.redirect("/" );
+    res.redirect("/");
   });
 });
 module.exports = router;
