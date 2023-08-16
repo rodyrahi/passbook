@@ -23,11 +23,11 @@ router.get("/", (req, res) => {
     std = stdout;
 
 
-    result = result.map(result => result.name);
+    const appNames = result.map(appData => appData.name);
     
 
    
-    res.render("server/server", { result: result, std: std });
+    res.render("server/server", { result: appNames, std: std });
   });
 });
 
