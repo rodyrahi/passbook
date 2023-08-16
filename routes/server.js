@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
     std = stdout;
 
 
-
+    result = result.map(result => result.name);
     
 
    
