@@ -9,8 +9,6 @@ const path = require('path');
 
 
 
-const serverRouter = require("./routes/server.js");
-app.use("/server",serverRouter) ;
 
 
 
