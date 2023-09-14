@@ -115,19 +115,22 @@ app.post('/getfile', upload.single('pdf'), (req, res) => {
         console.log(text);
 
 
-        let name 
+        let name ='';
         let father_name = '';
-        let account_number = text[20].replace('Account No', '');
+        let account_number = '';
         let cif_number = text[21].slice(11);
         let ifsc_code = 'PUB0099000';
         let mobile_number = text[23].replace('Mobile No', '');
         let id_number = '';
         let ko_number = 'K410094';
         let dob
-        for (let index = 16; index < 45; index++) {
+        for (let index = 10; index < 45; index++) {
           const element = text[index];
 
+          
+
           if (element.startsWith('Customer Name')) {
+           
             name = element.replace('Customer Name' ,'')
           }
 
